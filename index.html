@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- TODO: page <title> shown in the browser tab -->
+    <title>Learning Robust Policies for Whole-Body Assistive Tasks via Dynamic Human Motion Generation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <!-- ===================== TITLE / AUTHORS ===================== -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+
+                        <!-- TODO: full paper title -->
+                        <h1 class="title is-2 publication-title" style="font-size: 2.2rem;">
+                            Learning Robust Policies for Whole-Body<br>
+                            Assistive Tasks via Dynamic Human Motion Generation
+                        </h1>
+
+                        <!-- TODO: venue / submission status -->
+                        <h3 class="title is-4 conference-authors">In submission</h3>
+
+                        <!-- TODO: author list. Add/remove authors and superscript affiliation markers. -->
+                        <!-- <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="#">Author One</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="#">Author Two</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="#">Author Three</a><sup>2</sup></span>
+                        </div> -->
+
+                        <!-- TODO: affiliations -->
+                        <!-- <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Carnegie Mellon University,</span>
+                            <span class="author-block"><sup>2</sup>Affiliation Two</span>
+                        </div> -->
+
+                        <!-- ===================== LINKS / BUTTONS ===================== -->
+                        <!-- <div class="column has-text-centered">
+                            <div class="publication-links">
+                                TODO: arXiv / paper PDF link
+                                <span class="link-block">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="ai ai-arxiv"></i></span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                TODO: code repository link
+                                <span class="link-block">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="fab fa-github"></i></span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                TODO: video link (YouTube, etc.)
+                                <span class="link-block">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="fab fa-youtube"></i></span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== TEASER / DEMO VIDEO ===================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 1.5rem;">
+        <div class="container is-max-widescreen">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                <video autoplay controls muted loop playsinline width="100%" style="border-radius: 5px;">
+                    <source src="videos/DemoVideo_20260716.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABSTRACT ===================== -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p class="section-lead">
+Robots that assist with transfer tasks such as Sit-to-Stand (STS) and Lift-and-Transfer (L&T) could help care recipients live more independently while reducing the physical burden on caregivers.
+Learning robot policies for these tasks is challenging: real-world data collection is costly and safety-critical, making simulation an attractive alternative.
+Prior work, however, typically treats the human as static or minimally responsive and thus fails to capture the cooperative nature of transfer assistance.
+We present a simulation-based framework for learning whole-body assistive robot policies.
+At its core is a human policy trained with an adversarial motion prior that produces realistic care-recipient motion in response to the robot's actions.
+A human-adaptive scripted controller interacts with this policy to collect diverse robot demonstrations at scale.
+From these demonstrations, we train 3D diffusion policies that map segmented human point clouds and robot joint positions to whole-body actions for a mobile manipulator, without relying on privileged human state at deployment.
+The resulting robot policies successfully perform both STS and L&T assistance in simulation.
+Preliminary experiments further demonstrate sim-to-real transfer for STS after fine-tuning on a small amount of real-world data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== METHOD / OVERVIEW ===================== -->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3 has-text-centered"><span class="dvima">Overview</span></h2>
+                </div>
+            </div>
+            <br>
+            <p class="section-lead">
+                Our training framework has three stages. First, we train a physics-based human policy with an Adversarial Motion Prior (AMP) and latent conditioning to generate <strong>dynamic physics-based human motions</strong> across varied human physical capabilities, body scales, poses, motion styles, and environments. Next, we simulate robot assistance with a human-adaptive scripted controller and curate successful interactions as robot demonstrations. Finally, we train a deployable assistive robot policy that maps segmented human point clouds and robot joint positions to robot delta joint actions.
+            </p>
+            <br>
+            <img src="figs/overview.png" class="interpolation-image" alt="Method pipeline figure"
+                style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; margin-top: 2rem;" />
+        </div>
+    </section>
+
+    <!-- ===================== RESULTS / DEMO VIDEOS ===================== -->
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3 has-text-centered"><span class="dvima">Human Motion Generation</span></h2>
+                </div>
+            </div>
+            <br>
+            <p class="section-lead">
+                The physics-based human policy produces motions that are both <b>realistic</b> and
+                <b>diverse</b> during physical interaction with the robot. We ablate its two
+                ingredients &mdash; AMP and latent conditioning.
+            </p>
+            <br>
+
+            <p class="section-lead">
+                The policy trained with AMP produces realistic motions following the small set of motion capture data.
+            </p>
+            <br>
+
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 5px;">
+                            <source src="videos/20260430_211713_sit2stand_amp_cut.mp4" type="video/mp4">
+                        </video>
+                        <p style="text-align: center; margin-top: 0.75rem; font-size: 130%; width: 100%;">
+                            <b>With AMP:</b> natural, whole-body coordinated motion.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 5px;">
+                            <source src="videos/20260501_005420_sit2stand_no_amp.mp4" type="video/mp4">
+                        </video>
+                        <p style="text-align: center; margin-top: 0.75rem; font-size: 130%; width: 100%;">
+                            <b>Without AMP:</b> unnatural motion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="section-lead">
+                The human policy is conditioned on a latent variable, sampled once per episode from a normal distribution, which generates diverse yet temporally consistent motions.
+            </p>
+            <br>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 5px;">
+                            <source src="videos/20260501_001225_sit2stand_div_variable_1.mp4" type="video/mp4">
+                        </video>
+                        <p style="text-align: center; margin-top: 0.75rem; font-size: 130%; width: 100%;">
+                            <b>Latent 1:</b> one natural way of standing up.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 5px;">
+                            <source src="videos/20260501_001828_sit2stand_div_variable_2.mp4" type="video/mp4">
+                        </video>
+                        <p style="text-align: center; margin-top: 0.75rem; font-size: 130%; width: 100%;">
+                            <b>Latent 2:</b> a different, equally natural style.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3 has-text-centered"><span class="dvima">Interaction Data Collection in Simulation</span></h2>
+                </div>
+            </div>
+            <br>
+            <p class="section-lead">
+                We collect robot demonstrations with a human-adaptive scripted controller under the
+                active human policy, then filter successful interaction rollouts as demonstration
+                data for robot policy learning.
+            </p>
+            <br>
+
+            <div class="data-curation-flow">
+                <div class="data-curation-tasks">
+                    <div class="data-curation-task">
+                        <div class="data-curation-label">Sit-to-<br>Stand</div>
+                        <div class="data-curation-grid">
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts1_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts2_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts3_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts4_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="failure">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts5_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_2@2x.png" alt="Failure">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts6_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts7_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/sts8_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-curation-task">
+                        <div class="data-curation-label">Lift-and-<br>Transfer</div>
+                        <div class="data-curation-grid">
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt1_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt2_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt3_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt4_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt5_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt6_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="success">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt7_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_1@2x.png" alt="Success">
+                            </div>
+                            <div class="data-curation-video" data-outcome="failure">
+                                <video autoplay muted playsinline preload="metadata">
+                                    <source src="videos/data-curation/lt8_8s_web.mp4" type="video/mp4">
+                                </video>
+                                <img class="outcome-mark" src="static/images/data-curation/check_2@2x.png" alt="Failure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-curation-filter">
+                    <img src="static/images/data-curation/filter_save.png"
+                         alt="Filtering successful rollouts into saved robot demonstrations">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3 has-text-centered"><span class="dvima">Robot Policy Evaluation</span></h2>
+                </div>
+            </div>
+            <br>
+            <div class="body-scale-section">
+                <h3 class="title is-4 has-text-centered">Generalization to Different Human Body Scales</h3>
+                <p class="policy-evaluation-lead">
+                    We evaluate whether the learned robot policy can assist humans with different body
+                    scales. The successful rollouts below show the same mixed-capability-trained robot policy
+                    operating across smaller and nominal human body scales on both assistive tasks.
+                </p>
+
+                <div class="body-scale-group">
+                    <h4 class="body-scale-title">Human body scale: 0.88</h4>
+                    <h5 class="body-scale-task-title">Sit-to-Stand</h5>
+                    <div class="body-scale-grid" aria-label="Successful Sit-to-Stand rollouts with human body scale 0.88">
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted playsinline preload="metadata" data-restart-delay="0">
+                                <source src="videos/body-scale-generalization/scale_0.88_config_0155.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted playsinline preload="metadata" data-restart-delay="0">
+                                <source src="videos/body-scale-generalization/scale_0.88_config_0157.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted playsinline preload="metadata" data-restart-delay="0">
+                                <source src="videos/body-scale-generalization/scale_0.88_config_0199.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                    </div>
+                    <h5 class="body-scale-task-title">Lift-and-Transfer</h5>
+                    <div class="body-scale-grid" aria-label="Successful Lift-and-Transfer rollouts with human body scale 0.88">
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_0.88_lt_01.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_0.88_lt_02.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_0.88_lt_03.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="body-scale-group">
+                    <h4 class="body-scale-title">Human body scale: 1.0</h4>
+                    <h5 class="body-scale-task-title">Sit-to-Stand</h5>
+                    <div class="body-scale-grid" aria-label="Successful Sit-to-Stand rollouts with human body scale 1.0">
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_1.0_config_0071.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_1.0_config_0197.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_1.0_config_0475.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                    </div>
+                    <h5 class="body-scale-task-title">Lift-and-Transfer</h5>
+                    <div class="body-scale-grid" aria-label="Successful Lift-and-Transfer rollouts with human body scale 1.0">
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_1.0_lt_01.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_1.0_lt_02.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <figure class="body-scale-item">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/body-scale-generalization/scale_1.0_lt_03.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <div class="policy-comparison-section">
+                <h3 class="title is-4 has-text-centered">Qualitative Comparison: Training Robot Policy with Mixed vs. Single Human Capability</h3>
+                <p class="policy-evaluation-lead">
+                    Human capability means the <strong>human torque limit</strong> in simulation. Here we
+                    <strong>compare robot policies trained with different human capability distributions</strong>:
+                    one uses mixed capabilities, with both 1.0x and 0.25x humans, while the others use a single
+                    human capability.
+                </p>
+                <p class="policy-evaluation-lead">
+                    In each paired rollout, the human and robot placement, running human policy, human scale, and
+                    human capability are the same. The only difference is the <strong>robot policy</strong>.
+                </p>
+                <p class="policy-evaluation-lead">
+                    The rollouts below show that <strong>training with mixed human capabilities improves robustness</strong>:
+                    compared with policies trained only with 1.0x- or 0.25x-capability humans, mixed-capability
+                    training better adapts to the evaluated interactions and produces successful assistance.
+                </p>
+
+                <div class="policy-comparison-group">
+                    <div class="policy-comparison-grid" aria-label="Mixed capability policy versus single 1.0x capability policy">
+                        <div class="policy-comparison-label">Trained with Mixed (1.0x / 0.25x) Human Capabilities <strong class="ours-label">(Ours)</strong></div>
+                        <div class="policy-comparison-label">Trained with Single (1.0x) Human Capability</div>
+
+                        <div class="policy-comparison-video is-success" data-policy="Trained with Mixed (1.0x / 0.25x) Human Capabilities (Ours)">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0032_mixed_15p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="policy-comparison-video is-failure" data-policy="Trained with Single (1.0x) Human Capability">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0032_unihigh_15p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="policy-comparison-video is-success" data-policy="Trained with Mixed (1.0x / 0.25x) Human Capabilities (Ours)">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0039_mixed_15p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="policy-comparison-video is-failure" data-policy="Trained with Single (1.0x) Human Capability">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0039_unihigh_15p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="policy-comparison-video is-success" data-policy="Trained with Mixed (1.0x / 0.25x) Human Capabilities (Ours)">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0052_mixed_15p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="policy-comparison-video is-failure" data-policy="Trained with Single (1.0x) Human Capability">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0052_unihigh_15p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="policy-comparison-group">
+                    <div class="policy-comparison-grid" aria-label="Mixed capability policy versus single 0.25x capability policy">
+                        <div class="policy-comparison-label">Trained with Mixed (1.0x / 0.25x) Human Capabilities <strong class="ours-label">(Ours)</strong></div>
+                        <div class="policy-comparison-label">Trained with Single (0.25x) Human Capability</div>
+
+                        <div class="policy-comparison-video is-success" data-policy="Trained with Mixed (1.0x / 0.25x) Human Capabilities (Ours)">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0323_mixed_18p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="policy-comparison-video is-failure" data-policy="Trained with Single (0.25x) Human Capability">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0323_unilow_18p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="policy-comparison-video is-success" data-policy="Trained with Mixed (1.0x / 0.25x) Human Capabilities (Ours)">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0422_mixed_14p0s_freeze4p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="policy-comparison-video is-failure" data-policy="Trained with Single (0.25x) Human Capability">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0422_unilow_16p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="policy-comparison-video is-success" data-policy="Trained with Mixed (1.0x / 0.25x) Human Capabilities (Ours)">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0235_mixed_14p0s_freeze4p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="policy-comparison-video is-failure" data-policy="Trained with Single (0.25x) Human Capability">
+                            <video autoplay controls muted loop playsinline preload="metadata">
+                                <source src="videos/policy-comparison/q2_config_0235_unilow_16p0s_freeze2p5s.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="policy-evaluation-note">
+                <h3 class="title is-4 has-text-centered">Verifying Robot Assistance Necessity</h3>
+                <p class="policy-evaluation-lead">
+                    We verify that the learned human policy cannot complete Sit-to-Stand without sufficient robot
+                    assistance, i.e., it cannot stand independently. The rollouts compare full robot assistance with
+                    assistance terminated at lift start and mid-lift. In both early-termination cases, the human
+                    fails to complete standing, even when lifted off the seat.
+                </p>
+
+                <div class="policy-evaluation-videos">
+                    <div class="policy-evaluation-video">
+                        <video autoplay controls muted loop playsinline preload="metadata">
+                            <source src="videos/robot-assistance-necessity/full-assistance.mp4" type="video/mp4">
+                        </video>
+                        <p>Full robot assistance</p>
+                    </div>
+                    <div class="policy-evaluation-video">
+                        <video autoplay controls muted loop playsinline preload="metadata">
+                            <source src="videos/robot-assistance-necessity/terminated-mid-lift.mp4" type="video/mp4">
+                        </video>
+                        <p>Assistance terminated mid-lift</p>
+                    </div>
+                    <div class="policy-evaluation-video">
+                        <video autoplay controls muted loop playsinline preload="metadata">
+                            <source src="videos/robot-assistance-necessity/terminated-at-lift-start.mp4" type="video/mp4">
+                        </video>
+                        <p>Assistance terminated at lift start</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3 has-text-centered"><span class="dvima">Real-World Results</span></h2>
+                </div>
+            </div>
+            <br>
+            <p class="section-lead">
+                With <b>only six minutes of real-world demonstration data</b> for fine-tuning, the
+                simulation-trained policy performs preliminary <b>Sit-to-Stand</b> assistance on a
+                physical bimanual mobile robot, using only onboard RGB-D sensing and proprioception.
+            </p>
+            <br>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                        <video autoplay controls muted loop playsinline style="width: 100%; max-width: 360px; max-height: 80vh; border-radius: 5px;">
+                            <source src="videos/real-world-sit2stand-mosaic.mp4" type="video/mp4">
+                        </video>
+                        <p style="text-align: center; margin-top: 0.75rem; font-size: 130%; max-width: 540px;">
+                            Real-world Sit-to-Stand assistance (2x).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="content">
+                <h2 class="title is-3 has-text-centered">Limitations and Future Work</h2>
+                <p class="section-lead">
+                    This work has several limitations that motivate future work. First, real-world evaluation
+                    remains limited to Sit-to-Stand with one able-bodied participant; future work should extend
+                    evaluation to diverse participants, including care recipients with mobility impairments.
+                    Second, the current system does not directly regulate assistive forces; incorporating force
+                    sensing and human feedback could help modulate support during lifting. Third, simulated humans
+                    still differ from real users and target patient populations. Additional motion-capture data,
+                    human video priors, and musculoskeletal modeling could reduce this gap and improve the
+                    reliability of sim-to-real deployment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content has-text-centered">
+                        <p>
+                            This website is based on the
+                            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+                            project page template. Source available
+                            <a href="https://github.com/nerfies/nerfies.github.io">here</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

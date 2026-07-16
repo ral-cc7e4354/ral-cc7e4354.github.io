@@ -1,0 +1,6 @@
+# Media is committed directly (NOT via Git LFS) so GitHub Pages can serve it.
+# GitHub Pages does not resolve LFS pointers — it would serve the pointer text.
+*.mp4 -text
+*.pdf -text
+*.jpg -text
+*.png -text
