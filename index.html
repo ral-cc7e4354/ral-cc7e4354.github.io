@@ -37,9 +37,9 @@
                     <div class="column has-text-centered">
 
                         <!-- TODO: full paper title -->
-                        <h1 class="title is-2 publication-title" style="font-size: 2.2rem;">
-                            Learning Robust Policies for Whole-Body<br>
-                            Assistive Tasks via Dynamic Human Motion Generation
+                        <h1 class="title is-2 publication-title" style="font-size: 2.1rem;">
+                            Learning Robot Policies for Whole-Body Mobility Assistance<br>
+                            via Dynamic Human Motion Generation
                         </h1>
 
                         <!-- TODO: venue / submission status -->
@@ -119,11 +119,10 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p class="section-lead">
-Robots that assist with transfer tasks such as Sit-to-Stand (STS) and Lift-and-Transfer (L&T) could help care recipients live more independently while reducing the physical burden on caregivers.
-Learning robot policies for these tasks is challenging: real-world data collection is costly and safety-critical, making simulation an attractive alternative.
-Prior work, however, typically treats the human as static or minimally responsive and thus fails to capture the cooperative nature of transfer assistance.
-We present a simulation-based framework for learning whole-body assistive robot policies.
-At its core is a human policy trained with an adversarial motion prior that produces realistic care-recipient motion in response to the robot's actions.
+Robotic assistance for human mobility could benefit care recipients and reduce caregiver burden during physically demanding tasks such as Sit-to-Stand (STS) and Lift-and-Transfer (L&T).
+Learning robot policies for these whole-body assistive tasks is challenging: real-world data collection for human-robot interaction is costly and safety-critical, making simulation an attractive alternative.
+Prior work, however, typically treats the human as static or minimally responsive and thus fails to capture the cooperative nature of mobility assistance.
+We present a simulation-based framework for learning whole-body assistive robot policies. At its core is a human policy trained with an adversarial motion prior that produces realistic care-recipient motion in response to the robot's actions.
 A human-adaptive scripted controller interacts with this policy to collect diverse robot demonstrations at scale.
 From these demonstrations, we train 3D diffusion policies that map segmented human point clouds and robot joint positions to whole-body actions for a mobile manipulator, without relying on privileged human state at deployment.
 The resulting robot policies successfully perform both STS and L&T assistance in simulation.
